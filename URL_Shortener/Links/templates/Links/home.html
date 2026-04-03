@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #b4cbf5ff;
+
+        }
+        .container {
+            background: #e28f80ff;
+            padding: 30px;
+            border: 3px solid #080808ff;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333333ff;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #a39f9fff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #3d0311ff;
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid #0a0a0aff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #9c7274ff;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f7ef;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        .short-url {
+            font-weight: bold;
+            color: #007bff;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 URL Shortener</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.original_url }}
+            </div>
+            <div class="form-group">
+                {{ form.custom_alias }}
+            </div>
+            <button type="submit" class="btn">Shorten URL</button>
+        </form>
+
+        {% if short_url %}
+        <div class="result">
+            <p><strong>Original URL:</strong> {{ original_url }}</p>
+            <p><strong>Short URL:</strong> 
+                <a href="{{ short_url }}" target="_blank" class="short-url">{{ short_url }}</a>
+            </p>
+            <p><small>Copy this link and share it anywhere!</small></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

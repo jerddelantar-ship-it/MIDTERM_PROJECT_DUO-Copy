@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .stats {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 URL Statistics</h1>
+    <div class="stats">
+        <p><strong>Short Code:</strong> {{ url_map.short_code }}</p>
+        <p><strong>Original URL:</strong> {{ url_map.original_url }}</p>
+        <p><strong>Click Count:</strong> {{ url_map.click_count }}</p>
+        <p><strong>Created:</strong> {{ url_map.created_at }}</p>
+    </div>
+    <a href="/">← Back to Home</a>
+</body>
+</html>
